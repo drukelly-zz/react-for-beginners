@@ -12,14 +12,19 @@ class Order extends React.Component {
     if (!isAvailable) {
       return (
         <li key={key}>
-          Sorry {fish ? fish.name : 'fish'} is no longer available
+          <span>
+            Sorry {fish ? fish.name : 'fish'} is no longer available
+          </span>
         </li>
       );
     }
     return ( 
       <li key="{key}">
-        {count} lbs {fish.name}
-        {formatPrice(count * fish.price)}
+        <span>
+          {count} lbs {fish.name}&nbsp;&nbsp;
+          <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>
+        </span>
+        <span> {formatPrice(count * fish.price)} </span>
       </li>
     );
   };
